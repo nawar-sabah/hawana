@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عبير | أجهزة العطور</title>
+<style>
+:root {
+  --green: #20372d;
+  --gold: #c6a66b;
+  --bg: #faf9f6;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: #252923;
+}
+a { color: inherit; text-decoration: none; }
+.top {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+}
+header {
+  background: white;
+  padding: 20px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #eee;
+}
+.logo { font-size: 27px; font-weight: bold; color: var(--green); }
+.logo span { color: var(--gold); }
+nav { display: flex; gap: 20px; font-size: 14px; }
+.cart {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+.hero {
+  background: var(--green);
+  color: white;
+  padding: 55px 7%;
+}
+.hero h1 { font-size: clamp(27px, 4vw, 43px); margin: 0 0 16px; }
+.hero p { color: #d9e0da; line-height: 1.9; max-width: 520px; }
+.hero a {
+  display: inline-block;
+  background: var(--gold);
+  color: #17251f;
+  padding: 12px 24px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+main { padding: 35px 6%; }
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.heading h2 { margin-bottom: 6px; }
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+input, select {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 12px;
+  font: inherit;
+  min-width: 0;
+}
+#search { flex: 1; min-width: 170px; }
+select { max-width: 100%; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 7px;
+  overflow: hidden;
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-3px); }
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #f0eee8;
+}
+.info { padding: 14px; }
+.info h3 { font-size: 16px; margin: 0 0 10px; }
+.desc { color: #777; font-size: 13px; line-height: 1.7; }
+.price { font-weight: bold; color: var(--green); margin: 12px 0; }
+.btn {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  background: var(--green);
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+  font: inherit;
+}
+.btn:hover { background: #304b3d; }
+.empty { grid-column: 1 / -1; padding: 35px; text-align: center; }
+footer {
+  background: #17251f;
+  color: #eee;
+  text-align: center;
+  padding: 30px 15px;
+  line-height: 2;
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  nav { display: none; }
+}
+@media (max-width: 430px) {
+  header { padding: 16px 4%; }
+  .logo { font-size: 22px; }
+  main { padding: 25px 4%; }
+  .grid { gap: 10px; }
+  .info { padding: 10px; }
+  .info h3 { font-size: 14px; }
+  .desc { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top">أهلاً بكم في متجر عبير لأجهزة العطور</div>
+
+<header>
+  <a class="logo" href="#">عَبِير <span>✦</span></a>
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#products">الأجهزة</a>
+    <a href="#contact">اتصل بنا</a>
+  </nav>
+  <a class="cart" href="#products">
+    🛒 السلة (<span id="count">0</span>)
+  </a>
+</header>
+
+<section class="hero">
+  <h1>العطر المثالي يبدأ من هنا</h1>
+  <p>
+    اكتشف مجموعتنا من أجهزة تعطير المنازل والمكاتب
+    والمساحات التجارية، واختر الجهاز المناسب لك.
+  </p>
+  <a href="#products">تسوق الأجهزة ←</a>
+</section>
+
+<main id="products">
+  <div class="heading">
+    <div>
+      <h2>جميع الأجهزة</h2>
+      <div class="desc" id="resultCount">المنتجات المتوفرة</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input id="search" type="search"
+      placeholder="ابحث عن جهاز عطور..."
+      aria-label="البحث عن المنتجات">
+    <select id="category" aria-label="التصنيف">
+      <option value="all">جميع التصنيفات</option>
+      <option value="home">أجهزة منزلية</option>
+      <option value="office">أجهزة تجارية</option>
+    </select>
+    <select id="sort" aria-label="ترتيب المنتجات">
+      <option value="asc">السعر: من الأقل للأعلى</option>
+      <option value="desc">السعر: من الأعلى للأقل</option>
+      <option value="name">الاسم</option>
+    </select>
+  </div>
+
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer id="contact">
+  <h3>عَبِير ✦ لأجهزة العطور</h3>
+  <p>نساعدك على اختيار تجربة العطر المناسبة لمساحتك.</p>
+  <p>الأسعار والمنتجات الحالية تجريبية وقابلة للتعديل.</p>
+  <small>© <span id="year"></span> متجر عبير</small>
+</footer>
+
+<script>
+const products = [
+  {
+    id: 1, name: "جهاز تعطير منزلي",
+    category: "home", price: 85000,
+    desc: "تصميم أنيق للمنازل والغرف.",
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 2, name: "جهاز تعطير للمكاتب",
+    category: "office", price: 145000,
+    desc: "خيار للمكاتب والمساحات العملية.",
+    image: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 3, name: "جهاز عطور صغير",
+    category: "home", price: 65000,
+    desc: "حجم صغير وتصميم بسيط.",
+    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 4, name: "جهاز تعطير للمحلات",
+    category: "office", price: 195000,
+    desc: "للمحلات والاستقبال والمساحات الواسعة.",
+    image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+let cart = [];
+
+const money = n =>
+  n.toLocaleString("en-US") + " د.ع";
+
+function render() {
+  const q = document.getElementById("search").value
+    .trim().toLowerCase();
+  const cat = document.getElementById("category").value;
+  const sort = document.getElementById("sort").value;
+
+  let list = products.filter(p =>
+    p.name.toLowerCase().includes(q) &&
+    (cat === "all" || p.category === cat)
+  );
+
+  if (sort === "asc") list.sort((a,b) => a.price-b.price);
+  if (sort === "desc") list.sort((a,b) => b.price-a.price);
+  if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name, "ar"));
+
+  document.getElementById("resultCount").textContent =
+    list.length + " منتجات";
+
+  document.getElementById("grid").innerHTML = list.length
+    ? list.map(p => `
+      <article class="card">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <div class="info">
+          <h3>${p.name}</h3>
+          <div class="desc">${p.desc}</div>
+          <div class="price">${money(p.price)}</div>
+          <button class="btn" onclick="addToCart(${p.id})">
+            أضف إلى السلة
+          </button>
+        </div>
+      </article>
+    `).join("")
+    : '<div class="empty">لا توجد منتجات مطابقة لبحثك.</div>';
+}
+
+function addToCart(id) {
+  cart.push(id);
+  document.getElementById("count").textContent = cart.length;
+  alert("تمت إضافة المنتج إلى السلة التجريبية.");
+}
+
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("category").addEventListener("change", render);
+document.getElementById("sort").addEventListener("change", render);
+document.getElementById("year").textContent = new Date().getFullYear();
+
+render();
+</script>
+</body>
+</html>
