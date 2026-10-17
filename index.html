@@ -4,7 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>عبير | أجهزة العطور</title>
+<meta name="theme-color" content="#20372d">
+<meta name="description" content="هوانا سنت - أجهزة تعطير المنازل والمكاتب والمساحات التجارية">
+<title>هوانا سنت | أجهزة العطور</title>
+
 <style>
 :root {
   --green: #20372d;
@@ -12,6 +15,7 @@
   --bg: #faf9f6;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: Tahoma, Arial, sans-serif;
@@ -19,6 +23,7 @@ body {
   color: #252923;
 }
 a { color: inherit; text-decoration: none; }
+
 .top {
   background: var(--green);
   color: white;
@@ -26,6 +31,7 @@ a { color: inherit; text-decoration: none; }
   padding: 10px;
   font-size: 13px;
 }
+
 header {
   background: white;
   padding: 20px 6%;
@@ -35,22 +41,37 @@ header {
   gap: 16px;
   border-bottom: 1px solid #eee;
 }
-.logo { font-size: 27px; font-weight: bold; color: var(--green); }
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: var(--green);
+  white-space: nowrap;
+}
 .logo span { color: var(--gold); }
 nav { display: flex; gap: 20px; font-size: 14px; }
+nav a:hover { color: var(--gold); }
+
 .cart {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px 14px;
   white-space: nowrap;
 }
+
 .hero {
   background: var(--green);
   color: white;
   padding: 55px 7%;
 }
-.hero h1 { font-size: clamp(27px, 4vw, 43px); margin: 0 0 16px; }
-.hero p { color: #d9e0da; line-height: 1.9; max-width: 520px; }
+.hero h1 {
+  font-size: clamp(27px, 4vw, 43px);
+  margin: 0 0 16px;
+}
+.hero p {
+  color: #d9e0da;
+  line-height: 1.9;
+  max-width: 520px;
+}
 .hero a {
   display: inline-block;
   background: var(--gold);
@@ -59,6 +80,7 @@ nav { display: flex; gap: 20px; font-size: 14px; }
   border-radius: 4px;
   margin-top: 12px;
 }
+
 main { padding: 35px 6%; }
 .heading {
   display: flex;
@@ -68,6 +90,7 @@ main { padding: 35px 6%; }
   flex-wrap: wrap;
 }
 .heading h2 { margin-bottom: 6px; }
+
 .controls {
   display: flex;
   gap: 10px;
@@ -84,6 +107,7 @@ input, select {
 }
 #search { flex: 1; min-width: 170px; }
 select { max-width: 100%; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -97,16 +121,19 @@ select { max-width: 100%; }
   transition: transform .2s;
 }
 .card:hover { transform: translateY(-3px); }
+
 .card img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   background: #f0eee8;
+  display: block;
 }
 .info { padding: 14px; }
 .info h3 { font-size: 16px; margin: 0 0 10px; }
 .desc { color: #777; font-size: 13px; line-height: 1.7; }
 .price { font-weight: bold; color: var(--green); margin: 12px 0; }
+
 .btn {
   display: block;
   width: 100%;
@@ -119,7 +146,13 @@ select { max-width: 100%; }
   font: inherit;
 }
 .btn:hover { background: #304b3d; }
-.empty { grid-column: 1 / -1; padding: 35px; text-align: center; }
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 35px;
+  text-align: center;
+}
+
 footer {
   background: #17251f;
   color: #eee;
@@ -127,32 +160,83 @@ footer {
   padding: 30px 15px;
   line-height: 2;
 }
+
+/* زر واتساب الثابت أسفل يمين الشاشة */
+.whatsapp-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  transition: transform .2s, box-shadow .2s;
+}
+.whatsapp-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+}
+.whatsapp-button svg {
+  width: 34px;
+  height: 34px;
+  fill: currentColor;
+}
+.whatsapp-label {
+  position: fixed;
+  right: 90px;
+  bottom: 36px;
+  z-index: 9998;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+  font-size: 13px;
+}
 @media (max-width: 900px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   nav { display: none; }
 }
 @media (max-width: 430px) {
   header { padding: 16px 4%; }
-  .logo { font-size: 22px; }
+  .logo { font-size: 21px; }
   main { padding: 25px 4%; }
   .grid { gap: 10px; }
   .info { padding: 10px; }
   .info h3 { font-size: 14px; }
   .desc { font-size: 12px; }
+  .whatsapp-button {
+    right: 15px;
+    bottom: 15px;
+    width: 55px;
+    height: 55px;
+  }
+  .whatsapp-label {
+    right: 80px;
+    bottom: 29px;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<div class="top">أهلاً بكم في متجر عبير لأجهزة العطور</div>
+<div class="top">أهلاً بكم في هوانا سنت لأجهزة العطور</div>
 
 <header>
-  <a class="logo" href="#">عَبِير <span>✦</span></a>
+  <a class="logo" href="#">هوانا سنت <span>✦</span></a>
+
   <nav>
     <a href="#">الرئيسية</a>
     <a href="#products">الأجهزة</a>
     <a href="#contact">اتصل بنا</a>
   </nav>
+
   <a class="cart" href="#products">
     🛒 السلة (<span id="count">0</span>)
   </a>
@@ -176,14 +260,19 @@ footer {
   </div>
 
   <div class="controls">
-    <input id="search" type="search"
+    <input
+      id="search"
+      type="search"
       placeholder="ابحث عن جهاز عطور..."
-      aria-label="البحث عن المنتجات">
+      aria-label="البحث عن المنتجات"
+    >
+
     <select id="category" aria-label="التصنيف">
       <option value="all">جميع التصنيفات</option>
       <option value="home">أجهزة منزلية</option>
       <option value="office">أجهزة تجارية</option>
     </select>
+
     <select id="sort" aria-label="ترتيب المنتجات">
       <option value="asc">السعر: من الأقل للأعلى</option>
       <option value="desc">السعر: من الأعلى للأقل</option>
@@ -195,35 +284,58 @@ footer {
 </main>
 
 <footer id="contact">
-  <h3>عَبِير ✦ لأجهزة العطور</h3>
+  <h3>هوانا سنت ✦ لأجهزة العطور</h3>
   <p>نساعدك على اختيار تجربة العطر المناسبة لمساحتك.</p>
   <p>الأسعار والمنتجات الحالية تجريبية وقابلة للتعديل.</p>
-  <small>© <span id="year"></span> متجر عبير</small>
+  <small>© <span id="year"></span> هوانا سنت</small>
 </footer>
+
+<!-- زر واتساب: غيّر الرقم عند الحاجة -->
+<a
+  class="whatsapp-button"
+  href="https://wa.me/9647XXXXXXXXX"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="تواصل معنا عبر واتساب"
+  title="تواصل معنا عبر واتساب"
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.49 0 .14 5.35.14 11.93c0 2.1.55 4.15 1.6 5.96L0 24l6.28-1.65a11.92 11.92 0 0 0 5.78 1.48h.01C18.65 23.83 24 18.48 24 11.9a11.85 11.85 0 0 0-3.48-8.42ZM12.07 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98.99-3.64-.24-.38a9.86 9.86 0 0 1-1.52-5.24c0-5.47 4.45-9.92 9.92-9.92a9.85 9.85 0 0 1 7.02 2.91 9.85 9.85 0 0 1 2.9 7.01c0 5.47-4.45 9.92-9.94 9.92Zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.5-.89-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+  </svg>
+</a>
+<span class="whatsapp-label">تواصل معنا</span>
 
 <script>
 const products = [
   {
-    id: 1, name: "جهاز تعطير منزلي",
-    category: "home", price: 85000,
+    id: 1,
+    name: "جهاز تعطير منزلي",
+    category: "home",
+    price: 85000,
     desc: "تصميم أنيق للمنازل والغرف.",
     image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 2, name: "جهاز تعطير للمكاتب",
-    category: "office", price: 145000,
+    id: 2,
+    name: "جهاز تعطير للمكاتب",
+    category: "office",
+    price: 145000,
     desc: "خيار للمكاتب والمساحات العملية.",
     image: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 3, name: "جهاز عطور صغير",
-    category: "home", price: 65000,
+    id: 3,
+    name: "جهاز عطور صغير",
+    category: "home",
+    price: 65000,
     desc: "حجم صغير وتصميم بسيط.",
     image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 4, name: "جهاز تعطير للمحلات",
-    category: "office", price: 195000,
+    id: 4,
+    name: "جهاز تعطير للمحلات",
+    category: "office",
+    price: 195000,
     desc: "للمحلات والاستقبال والمساحات الواسعة.",
     image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80"
   }
@@ -235,8 +347,9 @@ const money = n =>
   n.toLocaleString("en-US") + " د.ع";
 
 function render() {
-  const q = document.getElementById("search").value
-    .trim().toLowerCase();
+  const q = document.getElementById("search")
+    .value.trim().toLowerCase();
+
   const cat = document.getElementById("category").value;
   const sort = document.getElementById("sort").value;
 
@@ -245,9 +358,19 @@ function render() {
     (cat === "all" || p.category === cat)
   );
 
-  if (sort === "asc") list.sort((a,b) => a.price-b.price);
-  if (sort === "desc") list.sort((a,b) => b.price-a.price);
-  if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name, "ar"));
+  if (sort === "asc") {
+    list.sort((a, b) => a.price - b.price);
+  }
+
+  if (sort === "desc") {
+    list.sort((a, b) => b.price - a.price);
+  }
+
+  if (sort === "name") {
+    list.sort((a, b) =>
+      a.name.localeCompare(b.name, "ar")
+    );
+  }
 
   document.getElementById("resultCount").textContent =
     list.length + " منتجات";
@@ -255,7 +378,11 @@ function render() {
   document.getElementById("grid").innerHTML = list.length
     ? list.map(p => `
       <article class="card">
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <img
+          src="${p.image}"
+          alt="${p.name}"
+          loading="lazy"
+        >
         <div class="info">
           <h3>${p.name}</h3>
           <div class="desc">${p.desc}</div>
@@ -271,16 +398,27 @@ function render() {
 
 function addToCart(id) {
   cart.push(id);
-  document.getElementById("count").textContent = cart.length;
+
+  document.getElementById("count").textContent =
+    cart.length;
+
   alert("تمت إضافة المنتج إلى السلة التجريبية.");
 }
 
-document.getElementById("search").addEventListener("input", render);
-document.getElementById("category").addEventListener("change", render);
-document.getElementById("sort").addEventListener("change", render);
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("search")
+  .addEventListener("input", render);
+
+document.getElementById("category")
+  .addEventListener("change", render);
+
+document.getElementById("sort")
+  .addEventListener("change", render);
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 render();
 </script>
+
 </body>
 </html>
